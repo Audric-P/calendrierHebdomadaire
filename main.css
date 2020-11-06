@@ -2,8 +2,17 @@ body {
     background-color: #9d5f66;
 }
 
+textarea {
+    resize: none;
+}
+
 #secondcalendar {
     background-color: darkgoldenrod;
+}
+
+#modelecalendar {
+    position: relative;
+    top: 30px;
 }
 
 #modelecalendar td, #modelecalendar th {
@@ -22,9 +31,11 @@ body {
 #contcalendar {
 
     /* width: 280px; */
+    position: relative;
+    top: 20px;
     width: fit-content;
     margin: auto;
-    margin-top: 100px;
+    /* margin-top: 50px; */
     background-color: #904044;
     -webkit-box-shadow: 10px 10px 10px #212121;
     filter: progid:DXImageTransform.Microsoft.Shadow(color=#333333, direction=120, strength=5);

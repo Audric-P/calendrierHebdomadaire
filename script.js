@@ -1,4 +1,4 @@
-function calendar() {
+function calendarMonth() {
 
     var monthNames = ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'];
     var jours = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
@@ -67,4 +67,34 @@ function calendar() {
     document.getElementById('contcalendar').appendChild(table);
 }
 
-typeof window.addEventListener == 'undefined' ? window.attachEvent("onload", calendar) : addEventListener('load', calendar, false);
+function calendarWeek() {
+    // Noms des mois
+    var monthNames = ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // Noms des jours
+    var weekDays = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    // Durées des mois
+    var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    // Date d'aujourd'hui
+    var today = new Date();
+    // Jour de la date
+    var thisDay = today.getDate();
+    // Année de la date
+    var year = today.getYear();
+    year <= 200 ? year += 1900 : null;
+
+    // Années bissextiles
+    if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
+        monthDays[1] = 29;
+    }
+
+    // Premier jour de la semaine
+    var firstDay = today;
+    while (firstDay.getDay() != 1) {
+        firstDay.setDate(firstDay.getDate()-1);
+    }
+
+    //document.getElementById('secondcalendar').appendChild(table);
+}
+
+typeof window.addEventListener == 'undefined' ? window.attachEvent("onload", calendarMonth) : addEventListener('load', calendarMonth, false);
+typeof window.addEventListener == 'undefined' ? window.attachEvent("onload", calendarWeek) : addEventListener('load', calendarWeek, false);
