@@ -4,12 +4,65 @@
 <head>
     <title>calendrier</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script type="text/javascript" src="script.js"></script>
     
 </head>
 
 <body>
     <div id='contcalendar'></div>
+    <div id='secondcalendar'></div>
+    <div id='modelecalendar'>
+        <table>
+            <thead>
+                <tr>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mercredi</th>
+                    <th>Jeudi</th>
+                    <th>Vendredi</th>
+                    <th>Samedi</th>
+                    <th>Dimanche</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>28</th>
+                    <th>29</th>
+                    <th>30</th>
+                    <th>31</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <td class="midi" colspan="7" align="center">Midi</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="soir" colspan="7" align="center">Soir</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

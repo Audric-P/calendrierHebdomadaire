@@ -2,6 +2,23 @@ body {
     background-color: #9d5f66;
 }
 
+#secondcalendar {
+    background-color: darkgoldenrod;
+}
+
+#modelecalendar td, #modelecalendar th {
+    border: black 1px solid;
+}
+
+#modelecalendar > table {
+    border: black 1px solid;
+    border-collapse: collapse;
+}
+
+#midi #soir {
+
+}
+
 #contcalendar {
 
     /* width: 280px; */
