@@ -105,7 +105,7 @@ function calendarWeek() {
     // La case avec le mois et l'année
     var tbHead = document.createElement("th");
     tbHead.setAttribute('colspan', '7');
-    var tbhtxt = document.createTextNode(monthNames[today.getMonth() + 1] + ' - ' + year);
+    var tbhtxt = document.createTextNode(monthNames[today.getMonth() ] + ' - ' + year);
     tbHead.appendChild(tbhtxt);
     tbRow.appendChild(tbHead);
 
