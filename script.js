@@ -94,7 +94,6 @@ function calendarWeek() {
         firstDay.setDate(firstDay.getDate()-1);
     }
     
-    var startDay = firstDay.getDay();   
     
     // Tableau
     var table = document.createElement('table');
@@ -109,32 +108,27 @@ function calendarWeek() {
     tbHead.appendChild(tbhtxt);
     tbRow.appendChild(tbHead);
 
-    // La ligne avec les jours de la semaine
+    // La ligne avec les noms des jours
     var tbRow = table.insertRow(-1);
     for (var i = 0; i < weekDays.length; i++) {
         tbRow.insertCell(-1).appendChild(document.createTextNode(weekDays[i]));
     }
 
-    // La première ligne, cases vide jusqu'aujourd'hui
-    var tbRow = document.createElement("tr");
-    var column = 0;
-    for (var i = 0; i < startDay; i++) {
-        tbRow.insertCell(0);
-        column++;
-    }
+    // ---------
 
-    var day = firstDay;
+    // La ligne avec les numeros des jours
+    var tbRow = table.insertRow(-1);
     for (let i = 0; i < 7; i++) {
 
         // Nouvelle case
-        var tdd = tbRow.insertCell(-1);
+        var tbData = tbRow.insertCell(-1);
 
-        // Couleur rouge pour aujourd'hui
-        i == thisDay ? tdd.style.color = "#FF0000" : null;
-
-        // On met dans la case le texte
-        tdd.appendChild(document.createTextNode(day.getDate+i));
+        // On met le texte dans la case
+        tbData.appendChild(document.createTextNode(firstDay.getDate()+i));
+        
+        
     }
+
 
     // for (var i = 1; i <= nDays; i++) {
 
