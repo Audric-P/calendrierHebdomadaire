@@ -10,8 +10,14 @@ textarea {
     resize: none;
 }
 
-#secondcalendar {
+#secondcalendar table {
     background-color: darkgoldenrod;
+    border-collapse: collapse;
+
+}
+
+#secondcalendar td, #secondcalendar th {
+    border: black 1px solid;
 }
 
 #modelecalendar {
