@@ -88,8 +88,8 @@ function calendarWeek() {
     }
 
     // Premier jour de la semaine
-    // On le met sur Lundi
     var firstDay = today;
+    // On le met sur Lundi
     while (firstDay.getDay() != 1) {
         firstDay.setDate(firstDay.getDate()-1);
     }
@@ -131,6 +131,20 @@ function calendarWeek() {
 
     }
 
+    // La ligne de textearea
+    var tbRow = table.insertRow(-1);
+    for (let i = 0; i < 7; i++) {
+
+        // Nouvelle case
+        var tbData = tbRow.insertCell(-1);
+        // Nouvelle zone de texte
+        var txtarea = document.createElement('textarea');
+        
+        txtarea.cols = 7;
+        
+        tbData.appendChild(txtarea);
+
+    }
     
 
 
