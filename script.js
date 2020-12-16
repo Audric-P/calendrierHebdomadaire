@@ -114,20 +114,24 @@ function calendarWeek() {
         tbRow.insertCell(-1).appendChild(document.createTextNode(weekDays[i]));
     }
 
-    // ---------
-
     // La ligne avec les numeros des jours
     var tbRow = table.insertRow(-1);
+    // Numero du premier jour
+    var firstNum = firstDay.getDate();
     for (let i = 0; i < 7; i++) {
 
         // Nouvelle case
         var tbData = tbRow.insertCell(-1);
 
+        // Couleur jaune pour aujourd'hui
+        firstNum+i == thisDay ? tbData.style.color = "#FFFF00" : null;
+
         // On met le texte dans la case
-        tbData.appendChild(document.createTextNode(firstDay.getDate()+i));
-        
-        
+        tbData.appendChild(document.createTextNode(firstNum+i));
+
     }
+
+    
 
 
     // for (var i = 1; i <= nDays; i++) {
