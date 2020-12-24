@@ -32,7 +32,7 @@ function calendarWeek() {
     var table = document.createElement('table');
 
     // Ajouter une ligne à la fin
-    var tbRow = table.insertRow(-1);
+    var rowMonth = table.insertRow(-1);
 
     // La ligne avec le mois et l'année
     var tbHead = document.createElement("th");
@@ -46,22 +46,22 @@ function calendarWeek() {
     tbHead.setAttribute("class", monthClass[monthIndex]);
 
     tbHead.appendChild(tbhtxt);
-    tbRow.appendChild(tbHead);
+    rowMonth.appendChild(tbHead);
 
     // La ligne avec les noms des jours
-    var tbRow = table.insertRow(-1);
+    var rowDays = table.insertRow(-1);
     for (var i = 0; i < weekDays.length; i++) {
-        tbRow.insertCell(-1).appendChild(document.createTextNode(weekDays[i]));
+        rowDays.insertCell(-1).appendChild(document.createTextNode(weekDays[i]));
     }
 
     // La ligne avec les numeros des jours
-    var tbRow = table.insertRow(-1);
+    var rowNumbers = table.insertRow(-1);
     // Jour en train d'etre traité (commence sur Lundi)
     var curDay = firstDay;
     for (let i = 0; i < 7; i++) {
 
         // Nouvelle case
-        var tbData = tbRow.insertCell(-1);
+        var tbData = rowNumbers.insertCell(-1);
 
         // Couleur jaune pour aujourd'hui
         curDay.getDate() == thisDay ? tbData.style.color = "#FFFF00" : null;
@@ -81,11 +81,11 @@ function calendarWeek() {
     }
 
     // La ligne de textearea
-    var tbRow = table.insertRow(-1);
+    var rowNote = table.insertRow(-1);
     for (let i = 0; i < 7; i++) {
 
         // Nouvelle case
-        var tbData = tbRow.insertCell(-1);
+        var tbData = rowNote.insertCell(-1);
         // Nouvelle zone de texte
         var txtarea = document.createElement('textarea');
         
