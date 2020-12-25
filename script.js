@@ -31,22 +31,22 @@ function calendarWeek() {
     // Tableau
     var table = document.createElement('table');
 
-    // Ajouter une ligne à la fin
-    var rowMonth = table.insertRow(-1);
+    // Ajouter une ligne au début
+    var rowMonth = table.insertRow(0);
 
     // La ligne avec le mois et l'année
-    var tbHead = document.createElement("th");
-    tbHead.setAttribute('colspan', '7');
+    var headMonth = document.createElement("th");
+    headMonth.setAttribute('colspan', '7');
     var tbhtxt = document.createTextNode(monthNames[today.getMonth()] + ' - ' + year);
     
     // Couleur du mois
     // On récupère le mois actuel
     var monthIndex = today.getMonth();
     // On ajoute la classe correspondante au mois actuel
-    tbHead.setAttribute("class", monthClass[monthIndex]);
+    headMonth.setAttribute("class", monthClass[monthIndex]);
 
-    tbHead.appendChild(tbhtxt);
-    rowMonth.appendChild(tbHead);
+    headMonth.appendChild(tbhtxt);
+    rowMonth.appendChild(headMonth);
 
     // La ligne avec les noms des jours
     var rowDays = table.insertRow(-1);
@@ -61,19 +61,19 @@ function calendarWeek() {
     for (let i = 0; i < 7; i++) {
 
         // Nouvelle case
-        var tbData = rowNumbers.insertCell(-1);
+        var cellNumbers = rowNumbers.insertCell(-1);
 
         // Couleur jaune pour aujourd'hui
-        curDay.getDate() == thisDay ? tbData.style.color = "#FFFF00" : null;
+        curDay.getDate() == thisDay ? cellNumbers.style.color = "#FFFF00" : null;
 
         // Couleur du mois
         // On récupère le mois actuel
         var monthIndex = curDay.getMonth();
         // On ajoute la classe correspondante au mois actuel
-        tbData.setAttribute("class", monthClass[monthIndex]);
+        cellNumbers.setAttribute("class", monthClass[monthIndex]);
 
         // On met le texte dans la case
-        tbData.appendChild(document.createTextNode(curDay.getDate()));
+        cellNumbers.appendChild(document.createTextNode(curDay.getDate()));
 
         // On passe au jour suivant
         curDay.setDate(curDay.getDate()+1);
@@ -85,13 +85,13 @@ function calendarWeek() {
     for (let i = 0; i < 7; i++) {
 
         // Nouvelle case
-        var tbData = rowNote.insertCell(-1);
+        var cellNote = rowNote.insertCell(-1);
         // Nouvelle zone de texte
         var txtarea = document.createElement('textarea');
         
         txtarea.cols = 7;
         
-        tbData.appendChild(txtarea);
+        cellNote.appendChild(txtarea);
 
     }
     document.getElementById('calendar').appendChild(table);
