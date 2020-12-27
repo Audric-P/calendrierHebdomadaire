@@ -40,7 +40,7 @@ function calendarWeek() {
     // La ligne avec le mois et l'année
     var headMonth = document.createElement("th");
     headMonth.setAttribute('colspan', '7');
-    var tbhtxt = document.createTextNode(monthNames[today.getMonth()] + ' - ' + secondMonth + year);
+    var tbhtxt = document.createTextNode(monthNames[today.getMonth()] + secondMonth + ' - '  + year);
     
     // Couleur du mois
     // On récupère le mois actuel
@@ -99,17 +99,26 @@ function calendarWeek() {
     }
     document.getElementById('calendar').appendChild(table);
 }
-
+ 
 function makeSecondMonth(today, monthNames) {
+    var numFirstMonth = today.getMonth();
     // Dernier jour de la semaine
     var lastDay = today;
     // On avance sur le prochain Dimanche
     while (lastDay.getDay() != 0) {
         lastDay.setDate(lastDay.getDate()+1);
     }
+    // Numero du mois du dernier jour de la semaine
     var numSecondMonth = lastDay.getMonth();
-    var strSecondMonth = monthNames[numSecondMonth];
-    var strToReturn = strSecondMonth + " - ";
+    // Chaine vide retournée si le mois est le meme que le premier jour
+    var strToReturn = "";
+    // Si le mois n'est pas le même que celui du premier jour :
+    if (numFirstMonth != numSecondMonth) {
+        // On récupère le nom du mois dans le tableau
+        var strSecondMonth = monthNames[numSecondMonth];
+        // On sépare les deux mois par un '/'
+        strToReturn = " / " + strSecondMonth;
+    }
     return(strToReturn);
 }
 
