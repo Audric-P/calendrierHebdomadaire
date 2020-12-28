@@ -53,30 +53,35 @@ function calendarWeek() {
 
     // La ligne avec les noms des jours
     var rowDays = table.insertRow(-1);
-    for (var i = 0; i < weekDays.length; i++) {
-        rowDays.insertCell(-1).appendChild(document.createTextNode(weekDays[i]));
-    }
-
     // La ligne avec les numeros des jours
     var rowNumbers = table.insertRow(-1);
     // Jour en train d'etre traité (commence sur Lundi)
     var curDay = firstDay;
-    for (let i = 0; i < 7; i++) {
+    // Les deux lignes sont traitées simultanément
+    for (let i = 0; i < weekDays.length; i++) {
+
+        // rowDays.insertCell(-1).appendChild(document.createTextNode(weekDays[i]));
 
         // Nouvelle case
         var cellNumbers = rowNumbers.insertCell(-1);
+        var cellDays = rowDays.insertCell(-1);
 
         // Couleur jaune pour aujourd'hui
-        curDay.getDate() == thisDay ? cellNumbers.style.color = "#FFFF00" : null;
+        if (curDay.getDate() == thisDay) {
+            cellNumbers.style.color = "#FFFF00";
+            cellDays.style.color = "#FFFF00";
+        }
 
         // Couleur du mois
         // On récupère le mois actuel
         var monthIndex = curDay.getMonth();
         // On ajoute la classe correspondante au mois actuel
         cellNumbers.setAttribute("class", monthClass[monthIndex]);
+        cellDays.setAttribute("class", monthClass[monthIndex]);
 
         // On met le texte dans la case
         cellNumbers.appendChild(document.createTextNode(curDay.getDate()));
+        cellDays.appendChild(document.createTextNode(weekDays[i]));
 
         // On passe au jour suivant
         curDay.setDate(curDay.getDate()+1);
