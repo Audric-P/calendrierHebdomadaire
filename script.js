@@ -60,17 +60,9 @@ function calendarWeek() {
     // Les deux lignes sont traitées simultanément
     for (let i = 0; i < weekDays.length; i++) {
 
-        // rowDays.insertCell(-1).appendChild(document.createTextNode(weekDays[i]));
-
         // Nouvelle case
         var cellNumbers = rowNumbers.insertCell(-1);
         var cellDays = rowDays.insertCell(-1);
-
-        // Couleur jaune pour aujourd'hui
-        if (curDay.getDate() == thisDay) {
-            cellNumbers.style.color = "#FFFF00";
-            cellDays.style.color = "#FFFF00";
-        }
 
         // Couleur du mois
         // On récupère le mois actuel
@@ -78,6 +70,12 @@ function calendarWeek() {
         // On ajoute la classe correspondante au mois actuel
         cellNumbers.setAttribute("class", monthClass[monthIndex]);
         cellDays.setAttribute("class", monthClass[monthIndex]);
+
+        // Classe .today pour le jour d'aujourd'hui
+        if (curDay.getDate() == thisDay) {
+            cellNumbers.setAttribute("class", monthClass[monthIndex] + " today");
+            cellDays.setAttribute("class", monthClass[monthIndex] + " today");
+        }
 
         // On met le texte dans la case
         cellNumbers.appendChild(document.createTextNode(curDay.getDate()));

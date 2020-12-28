@@ -13,12 +13,12 @@ textarea {
 #calendar {
     position: relative;
     top: 20px;
+    
 }
 
 #calendar table {
     background-color: darkgoldenrod;
     border-collapse: collapse;
-
 }
 
 #calendar td, #calendar th {
@@ -26,9 +26,7 @@ textarea {
     text-align: center;
 }
 
-.today {
-    border: red 2px solid;
-}
+
 
 .jan, .juil {
     background-color: #a55eea;
@@ -52,6 +50,11 @@ textarea {
 
 .juin, .dec {
     background-color: #fc5c65;
+}
+
+.today {
+    color: yellow;
+    background-color: violet;
 }
 
 /* #calendar {
