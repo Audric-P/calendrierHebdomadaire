@@ -55,14 +55,21 @@ function calendarWeek() {
     var rowDays = table.insertRow(-1);
     // La ligne avec les numeros des jours
     var rowNumbers = table.insertRow(-1);
+    // La ligne de textearea
+    var rowNote = table.insertRow(-1);
     // Jour en train d'etre traité (commence sur Lundi)
     var curDay = firstDay;
     // Les deux lignes sont traitées simultanément
     for (let i = 0; i < weekDays.length; i++) {
 
+        // Zone de texte
+        var txtarea = document.createElement('textarea');
+        txtarea.cols = 7;
+
         // Nouvelle case
         var cellNumbers = rowNumbers.insertCell(-1);
         var cellDays = rowDays.insertCell(-1);
+        var cellNote = rowNote.insertCell(-1);
 
         // Couleur du mois
         // On récupère le mois actuel
@@ -70,36 +77,25 @@ function calendarWeek() {
         // On ajoute la classe correspondante au mois actuel
         cellNumbers.setAttribute("class", monthClass[monthIndex]);
         cellDays.setAttribute("class", monthClass[monthIndex]);
+        cellNote.setAttribute("class", monthClass[monthIndex]);
 
         // Classe .today pour le jour d'aujourd'hui
         if (curDay.getDate() == thisDay) {
             cellNumbers.setAttribute("class", monthClass[monthIndex] + " today");
             cellDays.setAttribute("class", monthClass[monthIndex] + " today");
+            cellNote.setAttribute("class", monthClass[monthIndex] + " today");
         }
 
         // On met le texte dans la case
         cellNumbers.appendChild(document.createTextNode(curDay.getDate()));
         cellDays.appendChild(document.createTextNode(weekDays[i]));
-
+        cellNote.appendChild(txtarea);
+        
         // On passe au jour suivant
         curDay.setDate(curDay.getDate()+1);
 
     }
 
-    // La ligne de textearea
-    var rowNote = table.insertRow(-1);
-    for (let i = 0; i < 7; i++) {
-
-        // Nouvelle case
-        var cellNote = rowNote.insertCell(-1);
-        // Nouvelle zone de texte
-        var txtarea = document.createElement('textarea');
-        
-        txtarea.cols = 7;
-        
-        cellNote.appendChild(txtarea);
-
-    }
     document.getElementById('calendar').appendChild(table);
 }
  
