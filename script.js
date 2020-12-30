@@ -1,6 +1,8 @@
 function calendarWeek() {
     // Noms des mois
     var monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+    // Noms des classes CSS des mois
+    var monthClass = ['jan', 'fev', 'mar', 'avr', 'mai', 'juin', 'juil', 'aou', 'sep', 'oct', 'nov', 'dec'];
     // Noms des jours
     var weekDays = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
     // Durées des mois
@@ -32,10 +34,17 @@ function calendarWeek() {
     // Ajouter une ligne à la fin
     var tbRow = table.insertRow(-1);
 
-    // La case avec le mois et l'année
+    // La ligne avec le mois et l'année
     var tbHead = document.createElement("th");
     tbHead.setAttribute('colspan', '7');
-    var tbhtxt = document.createTextNode(monthNames[today.getMonth() ] + ' - ' + year);
+    var tbhtxt = document.createTextNode(monthNames[today.getMonth()] + ' - ' + year);
+    
+    // Couleur du mois
+    // On récupère le mois actuel
+    var monthIndex = today.getMonth();
+    // On ajoute la classe correspondante au mois actuel
+    tbHead.setAttribute("class", monthClass[monthIndex]);
+
     tbHead.appendChild(tbhtxt);
     tbRow.appendChild(tbHead);
 
@@ -47,18 +56,27 @@ function calendarWeek() {
 
     // La ligne avec les numeros des jours
     var tbRow = table.insertRow(-1);
-    // Numero du premier jour
-    var firstNum = firstDay.getDate();
+    // Jour en train d'etre traité (commence sur Lundi)
+    var curDay = firstDay;
     for (let i = 0; i < 7; i++) {
 
         // Nouvelle case
         var tbData = tbRow.insertCell(-1);
 
         // Couleur jaune pour aujourd'hui
-        firstNum+i == thisDay ? tbData.style.color = "#FFFF00" : null;
+        curDay.getDate() == thisDay ? tbData.style.color = "#FFFF00" : null;
+
+        // Couleur du mois
+        // On récupère le mois actuel
+        var monthIndex = curDay.getMonth();
+        // On ajoute la classe correspondante au mois actuel
+        tbData.setAttribute("class", monthClass[monthIndex]);
 
         // On met le texte dans la case
-        tbData.appendChild(document.createTextNode(firstNum+i));
+        tbData.appendChild(document.createTextNode(curDay.getDate()));
+
+        // On passe au jour suivant
+        curDay.setDate(curDay.getDate()+1);
 
     }
 

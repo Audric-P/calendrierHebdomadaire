@@ -10,6 +10,11 @@ textarea {
     resize: none;
 }
 
+#calendar {
+    position: relative;
+    top: 20px;
+}
+
 #calendar table {
     background-color: darkgoldenrod;
     border-collapse: collapse;
@@ -18,6 +23,35 @@ textarea {
 
 #calendar td, #calendar th {
     border: black 1px solid;
+    text-align: center;
+}
+
+.today {
+    border: red 2px solid;
+}
+
+.jan, .juil {
+    background-color: #a55eea;
+}
+
+.fev, .aou {
+    background-color: #45aaf2;
+}
+
+.mar, .sep {
+    background-color: #26de81;
+}
+
+.avr, .oct {
+    background-color: #fed330;
+}
+
+.mai, .nov {
+    background-color: #fd9644;
+}
+
+.juin, .dec {
+    background-color: #fc5c65;
 }
 
 /* #calendar {
