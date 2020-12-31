@@ -20,6 +20,9 @@ function calendarWeek() {
         monthDays[1] = 29;
     }
 
+    // Deuxieme mois de la semaine
+    var secondMonth = makeSecondMonth(today, monthNames);
+
     // Premier jour de la semaine
     var firstDay = today;
     // On le met sur Lundi
@@ -37,7 +40,7 @@ function calendarWeek() {
     // La ligne avec le mois et l'année
     var headMonth = document.createElement("th");
     headMonth.setAttribute('colspan', '7');
-    var tbhtxt = document.createTextNode(monthNames[today.getMonth()] + ' - ' + year);
+    var tbhtxt = document.createTextNode(monthNames[today.getMonth()] + ' - ' + secondMonth + year);
     
     // Couleur du mois
     // On récupère le mois actuel
@@ -95,6 +98,19 @@ function calendarWeek() {
 
     }
     document.getElementById('calendar').appendChild(table);
+}
+
+function makeSecondMonth(today, monthNames) {
+    // Dernier jour de la semaine
+    var lastDay = today;
+    // On avance sur le prochain Dimanche
+    while (lastDay.getDay() != 0) {
+        lastDay.setDate(lastDay.getDate()+1);
+    }
+    var numSecondMonth = lastDay.getMonth();
+    var strSecondMonth = monthNames[numSecondMonth];
+    var strToReturn = strSecondMonth + " - ";
+    return(strToReturn);
 }
 
 typeof window.addEventListener == 'undefined' ? window.attachEvent("onload", calendarWeek) : addEventListener('load', calendarWeek, false);
